@@ -6,6 +6,7 @@ import cors from 'cors';
 import passport from './config/passport';
 import authRoutes from './routes/authRoutes';
 
+// Inisialisasi Drizzle ORM
 import 'dotenv/config';
 import { drizzle } from 'drizzle-orm/node-postgres';
 
@@ -21,6 +22,7 @@ app.use('/api/auth', authRoutes);
 
 const PORT = process.env.PORT || 3000;
 
+// Endpoint untuk health check
 app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
