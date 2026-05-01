@@ -28,5 +28,5 @@ app.get('/api/health', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running On PORT ${PORT}`);
+  console.log(`Server running On PORT ${PORT}`); // eslint-disable-next-line no-console
 });
