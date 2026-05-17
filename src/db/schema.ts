@@ -25,43 +25,35 @@ export const roles = pgTable('roles', {
   createdAt: timestamp('created_at').defaultNow(),
 });
 
-// Update quizQuestions — tambah kolom untuk essay type
 export const quizQuestions = pgTable('quiz_questions', {
   id: serial('id').primaryKey(),
   roleId: integer('role_id').notNull().references(() => roles.id),
   question: text('question').notNull(),
+  options: jsonb('options').notNull(),
+  correctAnswer: integer('correct_answer').notNull(),
   skillName: varchar('skill_name', { length: 100 }).notNull(),
   difficulty: varchar('difficulty', { length: 20 }).notNull(),
-  questionType: varchar('question_type', { length: 20 }).notNull().default('rating'), // 'rating' | 'essay'
-  scenario: text('scenario'),           // untuk essay type
-  hint: text('hint'),                   // Show Hint
-  correctAnswer: text('correct_answer'), // untuk essay type
-  explanation: text('explanation'),      // penjelasan jawaban
+  explanation: text('explanation'),
   createdAt: timestamp('created_at').defaultNow(),
 });
 
-// quizResults dulu
 export const quizResults = pgTable('quiz_results', {
   id: serial('id').primaryKey(),
   userId: integer('user_id').notNull().references(() => users.id),
   roleId: integer('role_id').notNull().references(() => roles.id),
-  overallScore: integer('overall_score').notNull(),
-  matchedSkills: jsonb('matched_skills').notNull(),
-  missingSkills: jsonb('missing_skills').notNull(),
-  skillLevels: jsonb('skill_levels').notNull(),
-  skillComparison: jsonb('skill_comparison').notNull(),
+  overallMatch: integer('overall_match').notNull(),
+  levelBadge: varchar('level_badge', { length: 20 }).notNull(),
+  skillsAnalysis: jsonb('skills_analysis').notNull(),
   totalCorrect: integer('total_correct').default(0),
   totalIncorrect: integer('total_incorrect').default(0),
   createdAt: timestamp('created_at').defaultNow(),
 });
 
-// quizAnswers setelah quizResults
 export const quizAnswers = pgTable('quiz_answers', {
   id: serial('id').primaryKey(),
   resultId: integer('result_id').notNull().references(() => quizResults.id),
   questionId: integer('question_id').notNull().references(() => quizQuestions.id),
-  score: integer('score'),
-  essayAnswer: text('essay_answer'),
+  selectedOption: integer('selected_option'),
   isCorrect: integer('is_correct'),
   createdAt: timestamp('created_at').defaultNow(),
 });

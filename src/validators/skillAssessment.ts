@@ -5,10 +5,7 @@ export const submitAnswerSchema = z.object({
   answers: z.array(
     z.object({
       questionId: z.number(),
-      score: z.number().min(1).max(5).optional(),       // untuk rating
-      essayAnswer: z.string().min(100).optional(),       // untuk essay (min 100 karakter)
-    }).refine(data => data.score !== undefined || data.essayAnswer !== undefined, {
-      message: 'Harus isi score (rating) atau essayAnswer (essay)',
+      selectedOption: z.number().min(0).max(3),
     })
   ).min(1, 'Minimal 1 jawaban'),
 });
