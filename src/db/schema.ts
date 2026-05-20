@@ -7,6 +7,7 @@ import {
   text,
   timestamp,
   varchar,
+  real,
 } from 'drizzle-orm/pg-core';
 
 // ─── Users ────────────────────────────────────────────────────────────────────
@@ -114,5 +115,64 @@ export const roadmapLevels = pgTable('roadmap_levels', {
   skills: jsonb('skills').notNull(), // ["User Research", "Wireframing"]
   tools: jsonb('tools').notNull(), // ["Figma", "Notion"]
   order: integer('order').notNull(), // 1, 2, 3 — urutan tampil
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+// ─── Daily Missions ───────────────────────────────────────────────────────────
+// ─── Daily Mission Tasks ──────────────────────────────────────────────────────
+// 5 task per roadmap level. Setiap task punya instruksi & pertanyaan essay.
+
+export const missionTasks = pgTable('mission_tasks', {
+  id: serial('id').primaryKey(),
+  roadmapLevelId: integer('roadmap_level_id')
+    .notNull()
+    .references(() => roadmapLevels.id),
+  order: integer('order').notNull(), // 1–5
+  title: varchar('title', { length: 200 }).notNull(),
+  category: varchar('category', { length: 100 }).notNull(),
+  difficulty: varchar('difficulty', { length: 20 }).notNull(), // 'Easy' | 'Medium' | 'Hard'
+  durationMinutes: integer('duration_minutes').notNull(),
+  description: text('description').notNull(),
+  learningGoal: text('learning_goal').notNull(),
+  instructions: jsonb('instructions').notNull(), // ["step 1", "step 2", ...]
+  requirements: jsonb('requirements').notNull(), // ["Header section", "Search bar", ...]
+  hint: text('hint'),
+  // Tipe submission yang diterima
+  acceptsFigmaLink: boolean('accepts_figma_link').default(true),
+  acceptsFileUpload: boolean('accepts_file_upload').default(true),
+  // 3 pertanyaan essay refleksi
+  question1: text('question1').notNull(),
+  question2: text('question2').notNull(),
+  question3: text('question3').notNull(),
+  isActive: boolean('is_active').default(true),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+// ─── User Task Submissions ────────────────────────────────────────────────────
+// Setiap kali user submit satu task, satu record dibuat di sini.
+// Score = apakah task ini di-submit atau tidak (1 task = 1 poin).
+// Progress level = jumlah task submitted / total task × 100.
+
+export const userTaskSubmissions = pgTable('user_task_submissions', {
+  id: serial('id').primaryKey(),
+  userId: integer('user_id')
+    .notNull()
+    .references(() => users.id),
+  taskId: integer('task_id')
+    .notNull()
+    .references(() => missionTasks.id),
+  roadmapLevelId: integer('roadmap_level_id')
+    .notNull()
+    .references(() => roadmapLevels.id),
+  // Bukti kerja
+  figmaLink: text('figma_link'),
+  fileUrl: text('file_url'),
+  // Jawaban 3 pertanyaan essay
+  answer1: text('answer1').notNull(),
+  answer2: text('answer2').notNull(),
+  answer3: text('answer3').notNull(),
+  // Status
+  status: varchar('status', { length: 20 }).notNull().default('submitted'), // 'submitted' | 'draft'
+  submittedAt: timestamp('submitted_at').defaultNow(),
   createdAt: timestamp('created_at').defaultNow(),
 });

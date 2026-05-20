@@ -14,7 +14,8 @@
     "db:studio": "drizzle-kit studio",
     "seed": "ts-node src/db/seed.ts",
     "seed:assessment": "ts-node src/db/seedAssessment.ts",
-    "seed:roadmap": "ts-node src/db/seedRoadmap.ts"
+    "seed:roadmap": "ts-node src/db/seedRoadmap.ts",
+    "seed:daily-mission": "ts-node src/db/seedDailyMission.ts"
   },
   "keywords": [],
   "author": "",

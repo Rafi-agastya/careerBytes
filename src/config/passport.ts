@@ -77,7 +77,7 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID!,
       clientSecret: process.env.GITHUB_CLIENT_SECRET!,
-      callbackURL: '/api/auth/github/callback',
+      callbackURL: 'http://localhost:3000/api/auth/github/callback',
       scope: ['user:email'], // Agar kita dapat email user
     },
     async (

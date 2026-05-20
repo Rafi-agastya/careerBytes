@@ -8,6 +8,7 @@ import skillAssessmentRoutes from './routes/skillAssessmentRoutes';
 
 import careerRoadmapRoutes from './routes/careerRoadmapRoutes';
 import rolesRoutes from './routes/rolesRoutes';
+import dailyMissionRoutes from './routes/dailyMissionRoutes';
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use('/api/trending-skills', trendingSkillsRoutes);
 app.use('/api/skill-assessment', skillAssessmentRoutes);
 app.use('/api/career-roadmap', careerRoadmapRoutes);
 app.use('/api/roles', rolesRoutes);
+app.use('/api/daily-mission', dailyMissionRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
