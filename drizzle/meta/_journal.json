@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1777473487181,
+      "tag": "0000_boring_frog_thor",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1777480000000,
+      "tag": "0001_nifty_assessment",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1777510000000,
+      "tag": "0002_add_growth_demand",
+      "breakpoints": true
+    }
+  ]
+}

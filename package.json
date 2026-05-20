@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec ts-node src/app.ts",
     "build": "tsc",
-    "start": "node dist/app.js"
+    "start": "node dist/app.js",
+    "seed": "ts-node src/db/seed.ts",
+    "seed:trends": "ts-node src/db/seedTrendingSkills.ts",
+    "seed:assessment": "ts-node src/db/seedAssessment.ts"
   },
   "keywords": [],
   "author": "",
@@ -17,11 +20,14 @@
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
+    "drizzle-kit": "^0.31.10",
+    "drizzle-orm": "^0.45.2",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
-    "pg": "^8.20.0"
+    "pg": "^8.20.0",
+    "zod": "^4.4.1"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
