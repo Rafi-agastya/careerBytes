@@ -576,10 +576,13 @@ const seedMissionTasks = async () => {
       }
 
       for (const task of levelSeed.tasks) {
-        await db.insert(missionTasks).values({
-          roadmapLevelId: roadmapLevel.id,
-          ...task,
-        });
+        await db
+          .insert(missionTasks)
+          .values({
+            roadmapLevelId: roadmapLevel.id,
+            ...task,
+          })
+          .onConflictDoNothing();
       }
 
       console.log(

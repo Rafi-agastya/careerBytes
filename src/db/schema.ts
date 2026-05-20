@@ -7,7 +7,6 @@ import {
   text,
   timestamp,
   varchar,
-  real,
 } from 'drizzle-orm/pg-core';
 
 // ─── Users ────────────────────────────────────────────────────────────────────
@@ -118,7 +117,6 @@ export const roadmapLevels = pgTable('roadmap_levels', {
   createdAt: timestamp('created_at').defaultNow(),
 });
 
-// ─── Daily Missions ───────────────────────────────────────────────────────────
 // ─── Daily Mission Tasks ──────────────────────────────────────────────────────
 // 5 task per roadmap level. Setiap task punya instruksi & pertanyaan essay.
 

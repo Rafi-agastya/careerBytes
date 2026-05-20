@@ -5,68 +5,60 @@ import { roadmapLevels, roles } from './schema';
 
 const rolesData = [
   {
+    name: 'AI / Machine Learning Engineer',
+    description:
+      'Design, build, and deploy machine learning models and artificial intelligence systems to solve complex problems.',
+    careerLevel: 'Senior',
+    estimateYears: '4-5 Years',
+    isPopular: true,
+  },
+  {
+    name: 'Cloud Engineer',
+    description:
+      'Architect, migrate, and manage scalable and secure cloud infrastructure across public and private cloud providers.',
+    careerLevel: 'Mid Career',
+    estimateYears: '3-4 Years',
+    isPopular: true,
+  },
+  {
+    name: 'Cybersecurity Specialist',
+    description:
+      'Protect systems, networks, and data from cyber attacks, and ensure compliance with security standards.',
+    careerLevel: 'Mid Career',
+    estimateYears: '3-4 Years',
+    isPopular: true,
+  },
+  {
+    name: 'IT Auditor & Governance Specialist',
+    description:
+      'Evaluate IT infrastructure, ensure compliance with standards, and manage enterprise IT risks and governance.',
+    careerLevel: 'Mid Career',
+    estimateYears: '3-5 Years',
+    isPopular: false,
+  },
+  {
+    name: 'Data Analyst / Business Intelligence',
+    description:
+      'Analyze complex datasets and build interactive dashboards to extract meaningful insights that drive business decisions.',
+    careerLevel: 'Entry Level',
+    estimateYears: '1-2 Years',
+    isPopular: true,
+  },
+  {
+    name: 'DevOps Engineer',
+    description:
+      'Bridge development and operations by automating deployments, monitoring systems, and ensuring system reliability.',
+    careerLevel: 'Mid Career',
+    estimateYears: '3-4 Years',
+    isPopular: false,
+  },
+  {
     name: 'UI/UX Designer',
     description:
       'Design intuitive and engaging digital experiences by understanding user needs and translating them into effective interfaces.',
     careerLevel: 'Mid Career',
     estimateYears: '3-4 Years',
     isPopular: true,
-  },
-  {
-    name: 'Frontend Developer',
-    description:
-      'Build responsive and interactive user interfaces using modern web technologies and frameworks.',
-    careerLevel: 'Mid Career',
-    estimateYears: '2-3 Years',
-    isPopular: true,
-  },
-  {
-    name: 'Backend Developer',
-    description:
-      'Design and implement server-side logic, databases, and APIs that power web applications.',
-    careerLevel: 'Mid Career',
-    estimateYears: '2-3 Years',
-    isPopular: false,
-  },
-  {
-    name: 'Full Stack Developer',
-    description:
-      'Build complete web applications from frontend to backend, handling all layers of the tech stack.',
-    careerLevel: 'Senior',
-    estimateYears: '4-5 Years',
-    isPopular: false,
-  },
-  {
-    name: 'Data Analyst',
-    description:
-      'Analyze complex datasets to extract meaningful insights that drive business decisions.',
-    careerLevel: 'Entry Level',
-    estimateYears: '1-2 Years',
-    isPopular: true,
-  },
-  {
-    name: 'Data Scientist',
-    description:
-      'Apply machine learning and statistical modeling to solve complex business problems with data.',
-    careerLevel: 'Senior',
-    estimateYears: '4-5 Years',
-    isPopular: false,
-  },
-  {
-    name: 'Product Manager',
-    description:
-      'Lead product development from ideation to launch by aligning user needs with business goals.',
-    careerLevel: 'Mid Career',
-    estimateYears: '3-4 Years',
-    isPopular: true,
-  },
-  {
-    name: 'DevOps Engineer',
-    description:
-      'Bridge development and operations by automating deployments, monitoring systems, and ensuring reliability.',
-    careerLevel: 'Mid Career',
-    estimateYears: '3-4 Years',
-    isPopular: false,
   },
   {
     name: 'Mobile Developer',
@@ -77,12 +69,20 @@ const rolesData = [
     isPopular: false,
   },
   {
-    name: 'QA Engineer',
+    name: 'Backend Engineer',
     description:
-      'Ensure software quality through systematic testing, automation, and quality assurance processes.',
-    careerLevel: 'Entry Level',
-    estimateYears: '1-2 Years',
+      'Design and implement server-side logic, databases, and APIs that power web applications.',
+    careerLevel: 'Mid Career',
+    estimateYears: '2-3 Years',
     isPopular: false,
+  },
+  {
+    name: 'Frontend Developer',
+    description:
+      'Build responsive and interactive user interfaces using modern web technologies and frameworks.',
+    careerLevel: 'Mid Career',
+    estimateYears: '2-3 Years',
+    isPopular: true,
   },
 ];
 
@@ -99,153 +99,176 @@ const roadmapData: Record<
     order: number;
   }[]
 > = {
-  'UI/UX Designer': [
+  'AI / Machine Learning Engineer': [
     {
       level: 'beginner',
       levelLabel: 'Beginner Level',
       description:
-        'Building the foundation of visual communication and user empathy.',
-      skills: ['User Research', 'Wireframing', 'Typography', 'Color Theory'],
-      tools: ['Figma', 'Notion'],
+        'Building strong foundations in math, programming, and data cleaning.',
+      skills: ['Python', 'Statistics', 'Data Cleaning', 'SQL Basics'],
+      tools: ['Python', 'Jupyter Notebook', 'Pandas'],
       order: 1,
     },
     {
       level: 'intermediate',
       levelLabel: 'Intermediate Level',
-      description:
-        'Mastering interaction patterns and shipping complex design systems.',
-      skills: ['Auto Layout', 'Prototyping', 'Visual Design', 'Design System'],
-      tools: ['Figma', 'Adobe XD'],
+      description: 'Building and evaluating core machine learning models.',
+      skills: [
+        'Machine Learning',
+        'Feature Engineering',
+        'Model Evaluation',
+        'Data Visualization',
+      ],
+      tools: ['Scikit-learn', 'Matplotlib', 'Seaborn'],
       order: 2,
     },
     {
       level: 'advanced',
       levelLabel: 'Advanced Level',
       description:
-        'Leading design vision, mentoring teams, and driving business strategy through UX.',
-      skills: [
-        'Leadership',
-        'UX Strategy',
-        'Design Operations',
-        'Stakeholder Management',
-      ],
-      tools: ['Notion'],
+        'Deploying neural networks at scale and driving MLOps pipelines.',
+      skills: ['Deep Learning', 'MLOps', 'NLP', 'Model Deployment'],
+      tools: ['TensorFlow', 'PyTorch', 'MLflow'],
       order: 3,
     },
   ],
 
-  'Frontend Developer': [
+  'Cloud Engineer': [
     {
       level: 'beginner',
       levelLabel: 'Beginner Level',
-      description: 'Mastering the building blocks of the web.',
-      skills: ['HTML/CSS', 'JavaScript Basics', 'Responsive Design', 'Git'],
-      tools: ['VS Code', 'Git', 'Chrome DevTools'],
+      description:
+        'Understanding cloud concepts, networking, and basic storage.',
+      skills: [
+        'Cloud Fundamentals',
+        'Linux Basics',
+        'Networking Concepts',
+        'Identity Management',
+      ],
+      tools: ['AWS Free Tier', 'Linux Terminal', 'Git'],
       order: 1,
     },
     {
       level: 'intermediate',
       levelLabel: 'Intermediate Level',
       description:
-        'Building modern, interactive web applications with frameworks.',
+        'Deploying infrastructure as code and managing compute services.',
       skills: [
-        'React',
-        'TypeScript',
-        'State Management',
-        'REST API Integration',
+        'Infrastructure as Code',
+        'Cloud Architecture',
+        'Serverless Computing',
+        'Container Basics',
       ],
-      tools: ['React', 'TypeScript', 'Vite'],
+      tools: ['Terraform', 'AWS EC2/S3', 'Docker'],
       order: 2,
     },
     {
       level: 'advanced',
       levelLabel: 'Advanced Level',
       description:
-        'Optimizing performance and leading frontend architecture decisions.',
+        'Designing highly available, multi-cloud setups and governance.',
       skills: [
-        'Performance Optimization',
-        'Testing',
-        'Next.js',
-        'Web Accessibility',
+        'Multi-cloud Strategy',
+        'Cost Optimization',
+        'Cloud Security Engineering',
+        'Disaster Recovery',
       ],
-      tools: ['Next.js', 'Jest', 'Webpack'],
+      tools: ['AWS Organizations', 'Kubernetes', 'CloudWatch'],
       order: 3,
     },
   ],
 
-  'Backend Developer': [
+  'Cybersecurity Specialist': [
     {
       level: 'beginner',
       levelLabel: 'Beginner Level',
       description:
-        'Understanding server-side fundamentals and database basics.',
-      skills: ['Node.js Basics', 'REST API Design', 'SQL Fundamentals', 'Git'],
-      tools: ['VS Code', 'Postman', 'PostgreSQL'],
+        'Learning fundamentals of security, cryptography, and network defense.',
+      skills: [
+        'Network Security',
+        'Cryptography Basics',
+        'Linux & Windows Security',
+        'Threat Basics',
+      ],
+      tools: ['Wireshark', 'Nmap', 'Linux OS'],
       order: 1,
     },
     {
       level: 'intermediate',
       levelLabel: 'Intermediate Level',
       description:
-        'Building secure, scalable APIs and working with production databases.',
+        'Conducting vulnerability assessments and handling incidents.',
       skills: [
-        'Authentication & Authorization',
-        'Database Design',
-        'TypeScript',
-        'Error Handling',
+        'Vulnerability Management',
+        'Incident Response',
+        'Penetration Testing',
+        'Identity Security',
       ],
-      tools: ['Express', 'Drizzle ORM', 'Docker'],
+      tools: ['Burp Suite', 'Metasploit', 'Kali Linux'],
       order: 2,
     },
     {
       level: 'advanced',
       levelLabel: 'Advanced Level',
       description:
-        'Architecting distributed systems and ensuring high availability.',
+        'Designing security architecture and leading security compliance.',
       skills: [
-        'System Design',
-        'Microservices',
-        'Caching',
-        'Security Best Practices',
+        'Security Architecture',
+        'Threat Hunting',
+        'DevSecOps',
+        'Compliance Frameworks',
       ],
-      tools: ['Redis', 'Kubernetes', 'AWS'],
+      tools: ['Splunk', 'SIEM Tools', 'Defensive AI Tools'],
       order: 3,
     },
   ],
 
-  'Full Stack Developer': [
+  'IT Auditor & Governance Specialist': [
     {
       level: 'beginner',
       levelLabel: 'Beginner Level',
-      description: 'Building a foundation across the full web stack.',
-      skills: ['HTML/CSS', 'JavaScript', 'Node.js Basics', 'SQL Basics'],
-      tools: ['VS Code', 'Git', 'Postman'],
+      description:
+        'Understanding IT controls, business processes, and audit basics.',
+      skills: [
+        'IT General Controls (ITGC)',
+        'Internal Audit Basics',
+        'Risk Management',
+        'Documentation',
+      ],
+      tools: ['MS Excel', 'Visio', 'Notion'],
       order: 1,
     },
     {
       level: 'intermediate',
       levelLabel: 'Intermediate Level',
-      description: 'Shipping complete features from UI to database.',
-      skills: ['React', 'REST APIs', 'Database Design', 'Authentication'],
-      tools: ['React', 'Express', 'PostgreSQL'],
+      description:
+        'Implementing IT governance frameworks and performing specialized audits.',
+      skills: [
+        'COBIT Framework',
+        'ISO 27001 Basics',
+        'Compliance Auditing',
+        'Data Analytics for Audit',
+      ],
+      tools: ['ACL Robotics', 'Power BI', 'Jira'],
       order: 2,
     },
     {
       level: 'advanced',
       levelLabel: 'Advanced Level',
-      description: 'Leading end-to-end architecture and deployment pipelines.',
+      description:
+        'Leading strategic IT governance, enterprise risk management, and regulatory compliance.',
       skills: [
-        'Next.js',
-        'DevOps Basics',
-        'System Design',
-        'Performance Tuning',
+        'Enterprise IT Governance',
+        'SOX Compliance',
+        'Risk Strategy',
+        'Executive Reporting',
       ],
-      tools: ['Next.js', 'Docker', 'AWS'],
+      tools: ['ServiceNow Governance', 'AuditBoard', 'Tableau'],
       order: 3,
     },
   ],
 
-  'Data Analyst': [
+  'Data Analyst / Business Intelligence': [
     {
       level: 'beginner',
       levelLabel: 'Beginner Level',
@@ -259,7 +282,7 @@ const roadmapData: Record<
       level: 'intermediate',
       levelLabel: 'Intermediate Level',
       description:
-        'Extracting deeper insights and building impactful dashboards.',
+        'Extracting deeper insights and building impactful, interactive dashboards.',
       skills: [
         'Advanced SQL',
         'Python (Pandas)',
@@ -272,90 +295,15 @@ const roadmapData: Record<
     {
       level: 'advanced',
       levelLabel: 'Advanced Level',
-      description: 'Driving strategic decisions through advanced analytics.',
+      description:
+        'Driving strategic business decisions through data storytelling and modeling.',
       skills: [
-        'Machine Learning Basics',
         'Business Acumen',
         'Statistical Modeling',
         'Storytelling with Data',
+        'Data Warehouse Modeling',
       ],
       tools: ['Jupyter Notebook', 'Looker', 'dbt'],
-      order: 3,
-    },
-  ],
-
-  'Data Scientist': [
-    {
-      level: 'beginner',
-      levelLabel: 'Beginner Level',
-      description:
-        'Building strong foundations in math, programming, and data.',
-      skills: ['Python', 'Statistics', 'Data Cleaning', 'SQL'],
-      tools: ['Python', 'Jupyter Notebook', 'Pandas'],
-      order: 1,
-    },
-    {
-      level: 'intermediate',
-      levelLabel: 'Intermediate Level',
-      description: 'Building and evaluating machine learning models.',
-      skills: [
-        'Machine Learning',
-        'Feature Engineering',
-        'Model Evaluation',
-        'Data Visualization',
-      ],
-      tools: ['Scikit-learn', 'Matplotlib', 'Seaborn'],
-      order: 2,
-    },
-    {
-      level: 'advanced',
-      levelLabel: 'Advanced Level',
-      description: 'Deploying models at scale and driving data strategy.',
-      skills: ['Deep Learning', 'MLOps', 'NLP', 'Model Deployment'],
-      tools: ['TensorFlow', 'PyTorch', 'MLflow'],
-      order: 3,
-    },
-  ],
-
-  'Product Manager': [
-    {
-      level: 'beginner',
-      levelLabel: 'Beginner Level',
-      description:
-        'Understanding product thinking and how to work with cross-functional teams.',
-      skills: [
-        'User Research',
-        'Agile/Scrum',
-        'Product Documentation',
-        'Basic Data Analysis',
-      ],
-      tools: ['Notion', 'Jira', 'Google Analytics'],
-      order: 1,
-    },
-    {
-      level: 'intermediate',
-      levelLabel: 'Intermediate Level',
-      description: 'Owning product roadmaps and driving feature delivery.',
-      skills: [
-        'Prioritization Frameworks',
-        'Stakeholder Management',
-        'A/B Testing',
-        'OKR Setting',
-      ],
-      tools: ['Figma', 'Mixpanel', 'Confluence'],
-      order: 2,
-    },
-    {
-      level: 'advanced',
-      levelLabel: 'Advanced Level',
-      description: 'Shaping product vision and leading teams at scale.',
-      skills: [
-        'Product Strategy',
-        'Market Analysis',
-        'Technical Understanding',
-        'Go-to-Market',
-      ],
-      tools: ['Amplitude', 'Productboard', 'Tableau'],
       order: 3,
     },
   ],
@@ -394,6 +342,41 @@ const roadmapData: Record<
         'Multi-cloud',
       ],
       tools: ['Kubernetes', 'Prometheus', 'AWS'],
+      order: 3,
+    },
+  ],
+
+  'UI/UX Designer': [
+    {
+      level: 'beginner',
+      levelLabel: 'Beginner Level',
+      description:
+        'Building the foundation of visual communication and user empathy.',
+      skills: ['User Research', 'Wireframing', 'Typography', 'Color Theory'],
+      tools: ['Figma', 'Notion'],
+      order: 1,
+    },
+    {
+      level: 'intermediate',
+      levelLabel: 'Intermediate Level',
+      description:
+        'Mastering interaction patterns and shipping complex design systems.',
+      skills: ['Auto Layout', 'Prototyping', 'Visual Design', 'Design System'],
+      tools: ['Figma', 'Adobe XD'],
+      order: 2,
+    },
+    {
+      level: 'advanced',
+      levelLabel: 'Advanced Level',
+      description:
+        'Leading design vision, mentoring teams, and driving business strategy through UX.',
+      skills: [
+        'Leadership',
+        'UX Strategy',
+        'Design Operations',
+        'Stakeholder Management',
+      ],
+      tools: ['Notion'],
       order: 3,
     },
   ],
@@ -440,45 +423,81 @@ const roadmapData: Record<
     },
   ],
 
-  'QA Engineer': [
+  'Backend Engineer': [
     {
       level: 'beginner',
       levelLabel: 'Beginner Level',
       description:
-        'Understanding software testing fundamentals and manual testing.',
-      skills: [
-        'Manual Testing',
-        'Test Case Writing',
-        'Bug Reporting',
-        'SDLC Basics',
-      ],
-      tools: ['Jira', 'TestRail', 'Postman'],
+        'Understanding server-side fundamentals and database basics.',
+      skills: ['Node.js Basics', 'REST API Design', 'SQL Fundamentals', 'Git'],
+      tools: ['VS Code', 'Postman', 'PostgreSQL'],
       order: 1,
     },
     {
       level: 'intermediate',
       levelLabel: 'Intermediate Level',
-      description: 'Automating tests and integrating QA into CI/CD pipelines.',
+      description:
+        'Building secure, scalable APIs and working with production databases.',
       skills: [
-        'Test Automation',
-        'API Testing',
-        'Performance Testing',
-        'Regression Testing',
+        'Authentication & Authorization',
+        'Database Design',
+        'TypeScript',
+        'Error Handling',
       ],
-      tools: ['Selenium', 'Cypress', 'Postman'],
+      tools: ['Express', 'Drizzle ORM', 'Docker'],
       order: 2,
     },
     {
       level: 'advanced',
       levelLabel: 'Advanced Level',
-      description: 'Leading QA strategy and ensuring quality at scale.',
+      description:
+        'Architecting distributed systems and ensuring high availability.',
       skills: [
-        'QA Strategy',
-        'Security Testing',
-        'Test Architecture',
-        'Mentoring',
+        'System Design',
+        'Microservices',
+        'Caching',
+        'Security Best Practices',
       ],
-      tools: ['k6', 'SonarQube', 'GitHub Actions'],
+      tools: ['Redis', 'Kubernetes', 'AWS'],
+      order: 3,
+    },
+  ],
+
+  'Frontend Developer': [
+    {
+      level: 'beginner',
+      levelLabel: 'Beginner Level',
+      description: 'Mastering the building blocks of the web.',
+      skills: ['HTML/CSS', 'JavaScript Basics', 'Responsive Design', 'Git'],
+      tools: ['VS Code', 'Git', 'Chrome DevTools'],
+      order: 1,
+    },
+    {
+      level: 'intermediate',
+      levelLabel: 'Intermediate Level',
+      description:
+        'Building modern, interactive web applications with frameworks.',
+      skills: [
+        'React',
+        'TypeScript',
+        'State Management',
+        'REST API Integration',
+      ],
+      tools: ['React', 'TypeScript', 'Vite'],
+      order: 2,
+    },
+    {
+      level: 'advanced',
+      levelLabel: 'Advanced Level',
+      description:
+        'Optimizing performance and leading frontend architecture decisions.',
+      skills: [
+        'Performance Optimization',
+        'Testing',
+        'Next.js',
+        'Web Accessibility',
+      ],
+      tools: ['Next.js', 'Jest', 'Webpack'],
       order: 3,
     },
   ],
@@ -505,16 +524,28 @@ const seed = async () => {
   console.log('Seeding roadmap levels...');
 
   const levelsToInsert = Object.entries(roadmapData).flatMap(
-    ([roleName, levels]) =>
-      levels.map((level) => ({
-        roleId: roleMap[roleName],
+    ([roleName, levels]) => {
+      const roleId = roleMap[roleName];
+      if (!roleId) {
+        console.warn(
+          `Warning: Role dengan nama "${roleName}" tidak ditemukan di database map.`,
+        );
+        return [];
+      }
+      return levels.map((level) => ({
+        roleId,
         ...level,
-      })),
+      }));
+    },
   );
 
-  await db.insert(roadmapLevels).values(levelsToInsert).onConflictDoNothing();
+  if (levelsToInsert.length > 0) {
+    await db.insert(roadmapLevels).values(levelsToInsert).onConflictDoNothing();
+    console.log(`${levelsToInsert.length} roadmap levels berhasil di-seed!`);
+  } else {
+    console.log('Tidak ada roadmap levels yang dimasukkan.');
+  }
 
-  console.log(`${levelsToInsert.length} roadmap levels berhasil di-seed!`);
   process.exit(0);
 };
 
