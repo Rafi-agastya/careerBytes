@@ -14,6 +14,8 @@ export const trendingSkills = pgTable('trending_skills', {
   skillName: varchar('skill_name', { length: 100 }).notNull(),
   year: integer('year').notNull(),
   popularityScore: integer('popularity_score').notNull(),
+  growth: integer('growth').notNull().default(0),
+  demand: integer('demand').notNull().default(0),
   createdAt: timestamp('created_at').defaultNow(),
 });
 

@@ -13,7 +13,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
             'insert into users(name, email, password) values ($1, $2, $3) returning id, name, email',
             [name, email, hashedPassword]
         );
-        res.status(201).json({message: 'Registrasi Berhasi!', user: result.rows[0]});
+        res.status(201).json({message: 'Registrasi Berhasil!', user: result.rows[0]});
     } catch (err: any){
         console.log('error:', err);
         if(err.code === '23505'){

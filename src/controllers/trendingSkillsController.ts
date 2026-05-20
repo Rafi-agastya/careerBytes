@@ -1,11 +1,9 @@
 import { Response } from 'express';
 import { db } from '../config/db';
 import { trendingSkills } from '../db/schema';
-import { eq, desc, sql } from 'drizzle-orm';
-import { yearQuerySchema } from '../validators/trendingSkills';
+import { eq, desc } from 'drizzle-orm';
 import { authRequest } from '../middlewares/authMiddleware';
 
-// GET /api/trending-skills/periods
 export const getPeriods = async (req: authRequest, res: Response): Promise<void> => {
   try {
     const periods = await db
@@ -22,36 +20,53 @@ export const getPeriods = async (req: authRequest, res: Response): Promise<void>
   }
 };
 
-
-export const getSkillsByYear = async (req: authRequest, res: Response): Promise<void> => {
+export const getTrendingSkills = async (req: authRequest, res: Response): Promise<void> => {
   try {
-    // Validasi query pakai Zod
-    const parsed = yearQuerySchema.safeParse(req.query);
-        if (!parsed.success) {
-        const errorMessage = parsed.error.issues[0]?.message ?? 'Invalid query';
-        res.status(400).json({ message: errorMessage });
-        return;
-    }
+    const reqYear = req.query.year ? parseInt(req.query.year as string, 10) : 2026;
 
-    const { year } = parsed.data;
-
-    const skills = await db
-      .select()
-      .from(trendingSkills)
-      .where(eq(trendingSkills.year, year))
-      .orderBy(desc(trendingSkills.popularityScore));
-
-    if (skills.length === 0) {
-      res.status(404).json({ message: `Data untuk tahun ${year} tidak ditemukan` });
+    if (isNaN(reqYear)) {
+      res.status(400).json({ message: 'Parameter tahun harus berupa angka yang valid' });
       return;
     }
 
-    res.json({
-      message: 'Success',
-      year,
-      data: skills,
+    const rawData = await db
+      .select()
+      .from(trendingSkills)
+      .where(eq(trendingSkills.year, reqYear))
+      .orderBy(desc(trendingSkills.popularityScore));
+
+    if (rawData.length === 0) {
+      res.status(404).json({ message: `Data tren untuk tahun ${reqYear} tidak ditemukan` });
+      return;
+    }
+
+    const topGrowthItem = rawData.reduce(
+      (max, item) => (item.growth > max.growth ? item : max),
+      rawData[0],
+    );
+
+    const highDemandCount = rawData.filter((item) => item.demand >= 70).length;
+
+    res.status(200).json({
+      status: 'success',
+      year: reqYear,
+      stats: {
+        topGrowth: {
+          skillName: topGrowthItem.skillName,
+          value: `${topGrowthItem.growth}%`,
+        },
+        highDemandCount,
+        jobPostingsAnalyzed: '50K+',
+      },
+      chartData: rawData.map((item) => ({
+        skillName: item.skillName,
+        growth: item.growth,
+        demand: item.demand,
+        popularityScore: item.popularityScore,
+      })),
     });
-  } catch {
-    res.status(500).json({ message: 'Server Error' });
+  } catch (error) {
+    console.error('Error pada getTrendingSkills Controller:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 };

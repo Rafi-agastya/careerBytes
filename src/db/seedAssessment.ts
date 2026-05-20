@@ -1,3 +1,9 @@
+import dotenv from 'dotenv';
+import path from 'path';
+
+// Menjamin environment termuat terlepas dari direktori eksekusi terminal.
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
+
 import { db } from '../config/db';
 import { roles, quizQuestions } from './schema';
 

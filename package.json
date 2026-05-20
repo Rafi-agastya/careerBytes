@@ -9,6 +9,7 @@
     "build": "tsc",
     "start": "node dist/app.js",
     "seed": "ts-node src/db/seed.ts",
+    "seed:trends": "ts-node src/db/seedTrendingSkills.ts",
     "seed:assessment": "ts-node src/db/seedAssessment.ts"
   },
   "keywords": [],
